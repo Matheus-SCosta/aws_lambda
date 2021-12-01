@@ -1,0 +1,11 @@
+import boto3
+
+
+def lambda_handler(event, context):
+    print("Rodei")
+    print("EVENTO: ", event)
+    s3 = boto3.client('s3')
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    print("BUCKET: ", bucket)
+    response = s3.list_objects(Bucket=bucket)
+    print("RESPONSE: ",response)
